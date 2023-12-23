@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Авторизация</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-segment [value]="selectedMode" (ionChange)="changeMode($event)">
+    <ion-segment-button [value]="loginModeEnum.SignIn">
+      <ion-label>Вход</ion-label>
+    </ion-segment-button>
+    <ion-segment-button [value]="loginModeEnum.SignUp">
+      <ion-label>Регистрация</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-card>
+    <ion-card-content>
+      <form
+        [formGroup]="loginForm"
+        *ngIf="selectedMode === loginModeEnum.SignIn"
+      >
+        <ion-list>
+          <ion-item>
+            <ion-input
+              placeholder="Введите логин"
+              formControlName="login"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              placeholder="Введите пароль"
+              type="password"
+              formControlName="password"
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-button
+          expand="block"
+          [disabled]="loginForm.invalid"
+          (click)="login()"
+        >
+          Войти в аккаунт
+        </ion-button>
+      </form>
+
+      <form [formGroup]="regForm" *ngIf="selectedMode === loginModeEnum.SignUp">
+        <ion-list>
+          <ion-item>
+            <ion-input
+              placeholder="Введите логин"
+              formControlName="login"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              placeholder="Введите пароль"
+              type="password"
+              formControlName="password"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              placeholder="Подтвердите пароль"
+              type="password"
+              formControlName="confirm_password"
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-button expand="block" [disabled]="regForm.invalid">
+          Создать аккаунт
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
