@@ -5,6 +5,7 @@ import { pause, refresh, play } from 'ionicons/icons';
 // @ts-ignore
 import nipplejs from 'nipplejs';
 import { PageHeaderComponent } from 'src/app/components/page-header/page-header.component';
+import { ResultsApiService } from 'src/app/core/services/results/results-api.service';
 
 const SHAKE_DEFAULT_COORDS = [
   { x: 140, y: 160 },
@@ -60,7 +61,7 @@ export class GamePage implements AfterViewInit {
     },
   ];
 
-  constructor() {
+  constructor(private resultsApiService: ResultsApiService) {
     addIcons({ pause, refresh, play });
   }
 
@@ -270,6 +271,7 @@ export class GamePage implements AfterViewInit {
     if (isOpen) {
       this.pause = true;
       setTimeout(() => clearInterval(this.gameStatus));
+      this.resultsApiService.postNewResult(this.score).subscribe();
     }
   }
 

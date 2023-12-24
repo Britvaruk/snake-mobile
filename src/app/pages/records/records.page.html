@@ -1,14 +1,17 @@
 <app-page-header title="Таблица лидеров"></app-page-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-list>
+  <ng-container *ngIf="recordsList$ | async as list; else emptyBlock">
+    <ion-list *ngIf="list.length; else emptyBlock">
+      <ion-item *ngFor="let item of list">
+        <ion-label>{{ item.user.name }}</ion-label>
+        <div slot="end" class="record">{{ item.score }}</div>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+  <ng-template #emptyBlock>
     <ion-item>
-      <ion-label>Rick Astley</ion-label>
-      <div slot="end" class="record">246</div>
+      <ion-label>Список пуст</ion-label>
     </ion-item>
-    <ion-item>
-      <ion-label>ВасяВова</ion-label>
-      <div slot="end" class="record">56</div>
-    </ion-item>
-  </ion-list>
+  </ng-template>
 </ion-content>

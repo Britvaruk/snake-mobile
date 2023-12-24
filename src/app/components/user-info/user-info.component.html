@@ -1,12 +1,12 @@
-<ion-button (click)="presentPopover($event)">
+<ion-button *ngIf="userInfo" (click)="presentPopover($event)">
   <ion-icon slot="icon-only" name="person"></ion-icon>
 </ion-button>
 <ion-popover #popover [isOpen]="infoIsOpen" (didDismiss)="infoIsOpen = false">
   <ng-template>
     <ion-content class="ion-padding">
       <div class="user-info">
-        <ion-label>ВасяВова</ion-label>
-        <ion-label>Рекорд: 56</ion-label>
+        <ion-label>{{ userInfo?.name }}</ion-label>
+        <ion-label>Рекорд: {{ userInfo?.record }}</ion-label>
         <ion-button (click)="logout()">Выйти</ion-button>
       </div>
     </ion-content>
