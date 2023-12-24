@@ -1,3 +1,30 @@
 <app-page-header title="Супер Змейка"></app-page-header>
 
-<ion-content [fullscreen]="true"></ion-content>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="info">
+    <div class="info__score">
+      <ion-label>Счет:</ion-label>
+      <ion-label class="score-number">{{ score }}</ion-label>
+    </div>
+    <div class="info__controls">
+      <ion-button (click)="restart()">
+        <ion-icon name="refresh"></ion-icon>
+      </ion-button>
+      <ion-button (click)="onPause()">
+        <ion-icon [name]="pause ? 'play' : 'pause'"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+  <div class="game-wrapper" #joystick>
+    <canvas #canvas></canvas>
+  </div>
+</ion-content>
+
+<ion-alert
+  [isOpen]="isAlertOpen"
+  header="Вы проиграли"
+  subHeader="Текущий счет: {{ score }}"
+  [buttons]="alertButtons"
+  [backdropDismiss]="false"
+  (didDismiss)="setOpenLossAlert(false)"
+></ion-alert>
