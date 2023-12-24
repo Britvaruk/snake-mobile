@@ -4,5 +4,5 @@ export interface AuthBody {
 }
 
 export interface AuthKey {
-  token: string;
+  accessToken: string;
 }

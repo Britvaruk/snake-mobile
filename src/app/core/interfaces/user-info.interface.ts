@@ -1,5 +1,5 @@
 export interface UserInfo {
   id: number;
-  login: string;
-  record: string;
+  name: string;
+  record: number;
 }

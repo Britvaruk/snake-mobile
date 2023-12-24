@@ -32,6 +32,10 @@ export class AuthService {
     return this.authApiService.loginPost(body);
   }
 
+  registration(body: AuthBody): Observable<AuthKey> {
+    return this.authApiService.registrationPost(body);
+  }
+
   logout(): void {
     this.setToken(null);
     this.userService.resetUser();
