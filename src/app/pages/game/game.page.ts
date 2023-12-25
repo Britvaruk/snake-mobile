@@ -34,7 +34,7 @@ export class GamePage implements AfterViewInit {
 
   private cellSize: number = 20;
   private height: number =
-    Math.floor((window.innerHeight * 0.75) / this.cellSize) * this.cellSize;
+    Math.floor((window.innerHeight * 0.7) / this.cellSize) * this.cellSize;
   private width: number =
     Math.floor((window.innerWidth * 0.9) / this.cellSize) * this.cellSize;
 

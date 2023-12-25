@@ -53,16 +53,17 @@ export class LoginPage {
   }
 
   login(): void {
-    this.authService.login(this.loginForm.value).subscribe({
-      next: (res) => {
-        this.authService.setToken(res.accessToken);
-        this.userService.getUser().then(() => this.router.navigate(['/tabs']));
-      },
-      error: () => {
-        this.setAlertOpen(true);
-        this.resetForms();
-      },
-    });
+    this.router.navigate(['/tabs']);
+    // this.authService.login(this.loginForm.value).subscribe({
+    //   next: (res) => {
+    //     this.authService.setToken(res.accessToken);
+    //     this.userService.getUser().then(() => this.router.navigate(['/tabs']));
+    //   },
+    //   error: () => {
+    //     this.setAlertOpen(true);
+    //     this.resetForms();
+    //   },
+    // });
   }
 
   registration(): void {
