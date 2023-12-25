@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { IonPopover, IonicModule } from '@ionic/angular';
+import { IonPopover } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { person } from 'ionicons/icons';
 
 import { UserInfo } from 'src/app/core/interfaces/user-info.interface';
+import { IonicStandaloneModule } from 'src/app/core/modules/ionic-standalone.module';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 
@@ -14,7 +15,7 @@ import { UserService } from 'src/app/core/services/user/user.service';
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, RouterModule],
+  imports: [IonicStandaloneModule, CommonModule, RouterModule],
 })
 export class UserInfoComponent {
   infoIsOpen = false;

@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { pause, refresh, play } from 'ionicons/icons';
 // @ts-ignore
 import nipplejs from 'nipplejs';
 import { PageHeaderComponent } from 'src/app/components/page-header/page-header.component';
+import { IonicStandaloneModule } from 'src/app/core/modules/ionic-standalone.module';
 import { ResultsApiService } from 'src/app/core/services/results/results-api.service';
 
 const SHAKE_DEFAULT_COORDS = [
@@ -20,7 +20,7 @@ const SHAKE_DEFAULT_COORDS = [
   templateUrl: 'game.page.html',
   styleUrls: ['game.page.scss'],
   standalone: true,
-  imports: [IonicModule, PageHeaderComponent],
+  imports: [IonicStandaloneModule, PageHeaderComponent],
 })
 export class GamePage implements AfterViewInit {
   @ViewChild('canvas') canvasEl!: ElementRef;

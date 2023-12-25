@@ -7,19 +7,25 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { IonicModule, SegmentCustomEvent } from '@ionic/angular';
+import { SegmentCustomEvent } from '@ionic/angular';
 import { LoginMode } from './interfaces/login-mode.enum';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { matchValidator } from 'src/app/core/validators/confirm-password.validator';
 import { UserService } from 'src/app/core/services/user/user.service';
+import { IonicStandaloneModule } from 'src/app/core/modules/ionic-standalone.module';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    IonicStandaloneModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class LoginPage {
   selectedMode: LoginMode = LoginMode.SignIn;
