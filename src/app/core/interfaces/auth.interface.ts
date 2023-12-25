@@ -1,5 +1,5 @@
 export interface AuthBody {
-  username: string;
+  name: string;
   password: string;
 }
 

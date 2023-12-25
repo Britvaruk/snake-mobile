@@ -32,12 +32,12 @@ export class LoginPage {
   loginModeEnum = LoginMode;
 
   loginForm: FormGroup = this.formBuilder.group({
-    username: ['', Validators.required],
+    name: ['', Validators.required],
     password: ['', Validators.required],
   });
 
   regForm: FormGroup = this.formBuilder.group({
-    username: ['', Validators.required],
+    name: ['', Validators.required],
     password: [
       '',
       [Validators.required, matchValidator('confirmPassword', true)],
@@ -59,17 +59,16 @@ export class LoginPage {
   }
 
   login(): void {
-    this.router.navigate(['/tabs']);
-    // this.authService.login(this.loginForm.value).subscribe({
-    //   next: (res) => {
-    //     this.authService.setToken(res.accessToken);
-    //     this.userService.getUser().then(() => this.router.navigate(['/tabs']));
-    //   },
-    //   error: () => {
-    //     this.setAlertOpen(true);
-    //     this.resetForms();
-    //   },
-    // });
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (res) => {
+        this.authService.setToken(res.accessToken);
+        this.userService.getUser().then(() => this.router.navigate(['/tabs']));
+      },
+      error: () => {
+        this.setAlertOpen(true);
+        this.resetForms();
+      },
+    });
   }
 
   registration(): void {
