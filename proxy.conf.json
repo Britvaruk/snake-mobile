@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://185.159.82.73:8090/",
+    "target": "",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true

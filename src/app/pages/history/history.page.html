@@ -4,7 +4,9 @@
   <ng-container *ngIf="resultsList$ | async as list; else emptyBlock">
     <ion-list *ngIf="list.length; else emptyBlock">
       <ion-item *ngFor="let item of list">
-        <ion-label>{{ item.creationDateTime | date }}</ion-label>
+        <ion-label>
+          {{ item.creationDateTime | date: 'dd.MM.yyyy HH:mm' }}
+        </ion-label>
         <div slot="end" class="record">{{ item.score }}</div>
       </ion-item>
     </ion-list>
